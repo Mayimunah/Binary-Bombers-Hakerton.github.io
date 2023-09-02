@@ -10,7 +10,6 @@ async function getStripeProducts() {
   const res = await stripe.prices.list({
     expand: ['data.product']
   })
-
   const prices = res.data
   return prices
 }
