@@ -19,9 +19,10 @@ export default function RootLayout({ children }) {
             <h1 className='uppercase cursor-pointer hover:scale-110'>🎨anvasReach</h1>
           </Link>
           <i className="fa-solid fa-cart-shopping cursor-pointer hover:text-slate-500 "></i>
+
         </header>
 
-        <div className='flex-1'>
+        <div className='flex-1 text-white'>
         {children}
 
         </div>
