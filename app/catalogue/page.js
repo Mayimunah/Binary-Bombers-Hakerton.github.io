@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Stripe from 'stripe'
 import ProductsCard from '../ProductsCard'
+// import ProductsCard from '../ProductsCard'
 
 async function getStripeProducts() {
   const stripe = new Stripe(process.env.STRIPE_SECRET ?? "", {
@@ -14,7 +15,7 @@ async function getStripeProducts() {
   return prices
 }
 
-export default async function Home() {
+export default async function Catalogue() {
   const products = await getStripeProducts()
   console.log(products)
   return (
