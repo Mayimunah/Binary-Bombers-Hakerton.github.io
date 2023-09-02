@@ -1,8 +1,8 @@
-##About Project
+## About Project
 
 **CanvasReach** is a art work space where we upload sellers peiece of art to potential clients.
 
-##CanvasReach
+## CanvasReach
 Enables Artists to display their artwork on our platform and allowing them to reach a wider audience than they might on their own. This exposure can be particularly beneficial for emerging or lesser-known artists looking to establish their brand. 
 
 
