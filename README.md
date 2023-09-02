@@ -1,3 +1,14 @@
+##About Project
+
+**CanvasReach** is a art work space where we upload sellers peiece of art to potential clients.
+
+##CanvasReach
+Enables Artists to display their artwork on our platform and allowing them to reach a wider audience than they might on their own. This exposure can be particularly beneficial for emerging or lesser-known artists looking to establish their brand. 
+
+
+Our art marketplace website serves as a bridge between artists and art enthusiasts, providing valuable services, exposure, and resources to help artists thrive while offering buyers a diverse and convenient platform for discovering and purchasing art
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
