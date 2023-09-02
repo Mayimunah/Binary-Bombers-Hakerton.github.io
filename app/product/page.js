@@ -5,16 +5,20 @@ import useCart from "../(store)/store";
 import Image from "next/image";
 
 export default function ProductPage(props) {
-  const { searchParams } = props;
-  const { price_id } = props;
-  const product = useCart((state) => state.product);
-  const { cost, productInfo, name, description } = product;
-  // const { name, description } = productInfo
-  console.log(productInfo);
-  console.log(searchParams);
-  if (!product?.name) {
-    window.location.href = "/";
-  }
+    const { searchParams } = props;
+    const { price_id } = searchParams;
+    const product = useCart((state) => state.product);
+    const addItemToCart = useCart((state) => state.addItemToCart);
+    const { cost, productInfo, name, description } = product;
+
+    console.log(productInfo);
+
+    if (!product?.name) {
+      window.location.href = "/";
+    }
+
+
+
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-[1000px] mx-auto">
@@ -33,7 +37,9 @@ export default function ProductPage(props) {
             <h3 className="md:text-base">${cost / 100}</h3>
           </div>
           <p className="text-sm">{description}</p>
-          <button className="bg-slate-700 text-white hover:bg-slate-500 cursor-pointer ml-auto px-4 py-2">Add to Cart</button>
+          <button className="bg-slate-700 text-white hover:bg-slate-500 cursor-pointer ml-auto px-4 py-2">
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
