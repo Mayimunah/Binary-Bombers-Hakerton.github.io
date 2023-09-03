@@ -2,7 +2,7 @@ import "./globals.css";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Art Store",
+  title: " Store",
   description: "Works of Art",
 };
 
@@ -24,8 +24,9 @@ export default function RootLayout({ children }) {
         text-2xl sm:text-4xl sm:p-8 flex items-center justify-between bg-black"
         >
           <Link href="/">
-            <h1 className="uppercase cursor-pointer hover:scale-110">
-              🎨anvasReach
+            <h1 className=" cursor-pointer hover:scale-110">
+              {/* 🎨anvasReach */}
+              MARKETSqUARE
             </h1>
           </Link>
           <div className="flex justify-between gap-6">

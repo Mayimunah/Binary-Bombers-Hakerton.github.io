@@ -1,23 +1,62 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import useCart from "../(store)/store";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function ProductPage(props) {
-    const { searchParams } = props;
-    const { price_id } = searchParams;
-    const product = useCart((state) => state.product);
-    const addItemToCart = useCart((state) => state.addItemToCart);
-    const { cost, productInfo, name, description } = product;
+  const { searchParams } = props;
+  const { price_id } = searchParams;
+  const product = useCart((state) => state.product);
+  const addItemToCart = useCart((state) => state.addItemToCart);
+  const { cost, productInfo, name, description } = product;
+  const cartItems = useCart((state) => state.cart);
+  const router = useRouter();
 
-    console.log(productInfo);
+  console.log(productInfo);
 
-    if (!product?.name) {
-      window.location.href = "/";
+    // if (!product?.name) {
+    //   window.location.href = "/";
+    // }
+
+
+  function handleAddToCart() {
+    console.log("PRICE ID: ", price_id);
+    const newItem = {
+      quantity: 1,
+      price_id,
+      name,
+      cost,
+    };
+    addItemToCart({ newItem });
+  }
+
+
+  async function checkout() {
+    try {
+      const lineItems = cartItems.map((cartItem) => ({
+        price: cartItem.price_id,
+        quantity: 1,
+      }));
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ lineItems }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        router.push(data.session.url);
+      } else {
+        // Handle error here, e.g., show an error message to the user.
+        console.error("Failed to initiate checkout.");
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
     }
-
-
+  }
 
   return (
     <div className="flex flex-col">
@@ -37,8 +76,18 @@ export default function ProductPage(props) {
             <h3 className="md:text-base">${cost / 100}</h3>
           </div>
           <p className="text-sm">{description}</p>
-          <button className="bg-slate-700 text-white hover:bg-slate-500 cursor-pointer ml-auto px-4 py-2">
-            Add to Cart
+
+          <button
+            onClick={checkout}
+            className="bg-slate-700 text-white hover:bg-slate-500 cursor-pointer ml-auto px-4 py-2"
+          >
+            Pay
+          </button>
+          <button
+            onClick={handleAddToCart}
+            className="bg-slate-700 text-white hover:bg-slate-500 cursor-pointer ml-auto px-4 py-2"
+          >
+            Add to cart
           </button>
         </div>
       </div>
