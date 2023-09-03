@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useCart from "../(store)/store";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -21,7 +21,9 @@ export default function ProductPage(props) {
     // }
 
 
-  function handleAddToCart() {
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+
+  const handleAddToCart = () => {
     console.log("PRICE ID: ", price_id);
     const newItem = {
       quantity: 1,
@@ -30,7 +32,11 @@ export default function ProductPage(props) {
       cost,
     };
     addItemToCart({ newItem });
-  }
+
+    // Set a flag to indicate that the item has been added to the cart
+    setIsAddedToCart(true);
+  };
+
 
 
   async function checkout() {
@@ -85,9 +91,12 @@ export default function ProductPage(props) {
           </button>
           <button
             onClick={handleAddToCart}
-            className="bg-slate-700 text-white hover:bg-slate-500 cursor-pointer ml-auto px-4 py-2"
+            className={`bg-slate-700 text-white hover:bg-slate-500 cursor-pointer ml-auto px-4 py-2 ${
+              isAddedToCart ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={isAddedToCart}
           >
-            Add to cart
+            {isAddedToCart ? "Added to cart" : "Add to cart"}
           </button>
         </div>
       </div>
