@@ -6,8 +6,8 @@ export default function Loading() {
     <div className="min-h-screen flex items-center justify-center">
       <ClockLoader
         color="#f4f6f5"
-        loading
-        speedMultiplier={2}
+        // loading
+        // speedMultiplier={2}
       />
     </div>
   );

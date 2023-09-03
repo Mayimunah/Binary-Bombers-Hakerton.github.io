@@ -24,34 +24,37 @@ export default function RootLayout({ children }) {
         text-2xl sm:text-4xl sm:p-8 flex items-center justify-between bg-black"
         >
           <Link href="/">
-            <h1 className=" cursor-pointer hover:scale-110">
-              {/* 🎨anvasReach */}
-              MARKETSqUARE
-            </h1>
+            <h1 className=" cursor-pointer hover:scale-110">🎨anvasReach</h1>
           </Link>
           <div className="flex justify-between gap-6">
-
-          <Link href="/catalogue">
-            <h1 className=" cursor-pointer hover:scale-110 text-sm">
-              Catalogue
-            </h1>
-          </Link>
-          <Link href="/contact">
-            <h1 className=" cursor-pointer hover:scale-110 text-sm">
-              Contact
-            </h1>
-          </Link>
-          <Link href="/about">
-            <h1 className=" cursor-pointer hover:scale-110 text-sm">
-              About
-            </h1>
-          </Link>
-          <i className="fa-solid fa-cart-shopping cursor-pointer hover:text-slate-500 "></i>
+            <Link href="/catalogue">
+              <h1 className=" cursor-pointer hover:scale-110 text-sm">
+                Catalogue
+              </h1>
+            </Link>
+            <Link href="/contact">
+              <h1 className=" cursor-pointer hover:scale-110 text-sm">
+                Contact
+              </h1>
+            </Link>
+            <Link href="/about">
+              <h1 className=" cursor-pointer hover:scale-110 text-sm">About</h1>
+            </Link>
+            <i className="fa-solid fa-cart-shopping cursor-pointer hover:text-slate-500 "></i>
           </div>
         </header>
 
         <div className="flex-1 text-white">{children}</div>
-        <footer></footer>
+        <footer className="flex items-center flex-wrap justify-center border-t border-solid border-slate-300 p-4 md:p-8">
+          <Link
+            href={
+              "https://github.com/bellobambo/Binary-Bombers-Hakerton.github.io"
+            }
+            target="_blank"
+          >
+            <i className="fa-brands fa-github text-slate-700 hover:text-slate-500 cursor-pointer text-2xl sm:text-3xl md:text-4xl"></i>
+          </Link>
+        </footer>
       </body>
     </html>
   );
